@@ -1,0 +1,11 @@
+version: "3.1"
+
+services:
+    app:
+        build: .
+        restart: on-failure
+        ports:
+            - 5000:5000
+        environment:
+            TIMER: 3600
+        command: gunicorn -c gunicorn.conf.py -b 0.0.0.0:5000 app:server

@@ -1,0 +1,51 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Blocked By RKN",
+    "description": "microservice for checking blocked domains",
+
+    "version": "0.0.3"
+  },
+  "servers": [
+    {
+      "url": "http://0.0.0.0:5000/"
+    }],
+  "paths": {
+  "/":  {
+    "get": {
+      "tags": ["make request"],
+      "summary": "response on url",
+      "description": "response on requested url",
+      "parameters": [
+        {
+          "name": "url",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "default": "github.com"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "success operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "items": {
+                  "$ref": "#/"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400" : {
+        "description": "invalid request",
+        "content": {}
+      }
+    }
+  }}
+}
